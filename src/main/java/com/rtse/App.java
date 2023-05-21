@@ -18,7 +18,6 @@ public final class App {
         Thread[] threads = new Thread[THREADS];
 
         // defining each threads with a run() function that runs the add10 function
-        // and then starts each of the threads
         for (int i = 0; i < THREADS; i++) {
             threads[i] = new Thread(new Runnable() {
                 @Override
@@ -26,8 +25,11 @@ public final class App {
                     add10();
                 }
             });
+        }
 
-            threads[i].start();
+        // start the threads
+        for (Thread thread : threads) {
+            thread.start();
         }
 
         // join the threads at the end of the execution
